@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Website</title>
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <!-- Icon -->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+        <!-- Slicknav -->
+        <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+        <!-- Nivo Lightbox -->
+        <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+        <!-- Animate -->
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+        <!-- Main Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <!-- Responsive Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+        <!--fa fa icon-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    
+    </head>
+
+    <body>
+        <br /><br />
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-title-header text-center">
+                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                      Suppliers
+                    </h1>
+                </div></br>
+                <h1 style="font-size: 30px; text-align: center;">Enter new supplier information</h1>
+                <div class="row">
+                  <div class="col-1.5">
+                    <p style="font-size: 15px; padding-top: 13px;">Supplier name:</p>
+                  </div>
+                  <div class="col-3 col-md-2" style="padding-top: 10px;">
+                    <input type="text" class="form-control" name="suppliername"/>
+                  </div>
+                  <div class="col-1.5">
+                    <p style="font-size: 15px; padding-top: 13px;">Mobile number of supplier:</p>
+                  </div>
+                  <div class="col-3 col-md-2" style="padding-top: 10px;">
+                    <input type="text" class="form-control" name="suppliernumber"/>
+                  </div>
+                  <div class="col-1.5">
+                    <p style="font-size: 15px; padding-top: 13px;">Ingredient supplied:</p>
+                  </div>
+                  <div class="col-3 col-md-2" style="padding-top: 10px;">
+                    <input type="text" class="form-control" name="ingredientsupplied"/>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-0.5">
+                    <button type="button" id="submit" class="btn btn-common btn-nv-sty">
+                      Go
+                    </button>
+                  </div>
+                </div>
+            </div></br>
+            <h1 style="font-size: 30px; text-align: center;">List of all suppliers</h1>
+            <div class="container">
+              <table style="width: 100%;" id="transactions">
+                <tr>
+                  <th><b>SUPPLIER NAME</b></th>
+                  <th><b>MOBILE NUMBER</b></th>
+                  <th><b>INGREDIENT SUPPLIED</b></th>
+                </tr>
+                <tr>
+                  <td>vjhafjhbdv</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>amvmzbvcmbdv</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                    <td>a mbscbz</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>sma bn sd</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </table>
+              <div class="container-fluid br-line"></div>
+            </div>
+          </section>
+
+        <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="lni-chevron-up"></i>
+      </a>
+  
+      <div id="preloader">
+        <div class="sk-circle">
+          <div class="sk-circle1 sk-child"></div>
+          <div class="sk-circle2 sk-child"></div>
+          <div class="sk-circle3 sk-child"></div>
+          <div class="sk-circle4 sk-child"></div>
+          <div class="sk-circle5 sk-child"></div>
+          <div class="sk-circle6 sk-child"></div>
+          <div class="sk-circle7 sk-child"></div>
+          <div class="sk-circle8 sk-child"></div>
+          <div class="sk-circle9 sk-child"></div>
+          <div class="sk-circle10 sk-child"></div>
+          <div class="sk-circle11 sk-child"></div>
+          <div class="sk-circle12 sk-child"></div>
+        </div>
+      </div>
+      <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+  
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+      </script>
+      <script>
+        $(document).ready(function () {
+          $(".fancybox").fancybox({
+            openEffect: "none",
+            closeEffect: "none",
+          });
+  
+          $(".zoom").hover(
+            function () {
+              $(this).addClass("transition");
+            },
+            function () {
+              $(this).removeClass("transition");
+            }
+          );
+        });
+      </script>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="assets/js/jquery-min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.countdown.min.js"></script>
+      <script src="assets/js/jquery.nav.js"></script>
+      <script src="assets/js/jquery.easing.min.js"></script>
+      <script src="assets/js/wow.js"></script>
+      <script src="assets/js/jquery.slicknav.js"></script>
+      <script src="assets/js/nivo-lightbox.js"></script>
+      <script src="assets/js/main.js"></script>
+    </body>
+  </html>
+  
