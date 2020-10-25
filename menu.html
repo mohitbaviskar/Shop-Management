@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Shop Management System</title>
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <!-- Icon -->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+        <!-- Slicknav -->
+        <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+        <!-- Nivo Lightbox -->
+        <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+        <!-- Animate -->
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+        <!-- Main Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <!-- Responsive Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+        <!--fa fa icon-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+    </head>
+
+  <body>
+    <br /><br />
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title-header text-center">
+                <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                  Menu
+                </h1>
+            </div></br>
+            <h1 style="font-size: 30px; text-align: center;">Enter new dish/Update old dish</h1>
+            <div class="row">
+              <div class="col-2 col-md-1">
+                <p style="font-size: 15px; padding-top: 13px;">Dish name:</p>
+              </div>
+              <div class="col-4 col-md-2" style="padding-top: 10px;">
+                <input type="text" class="form-control" name="dishname"/>
+              </div>
+              <div class="col-2 col-md-1">
+                <p style="font-size: 15px; padding-top: 13px;">Description:</p>
+              </div>
+              <div class="col-4 col-md-2" style="padding-top: 10px;">
+                <input type="text" class="form-control" name="description"/>
+              </div>
+              <div class="col-1.5">
+                <p style="font-size: 15px; padding-top: 13px;">Type:</p>
+              </div>
+              <div class="col-4 col-md-2" style="padding-top: 10px;">
+                <input type="text" class="form-control" name="type"/>
+              </div>
+              <div class="col-1.5">
+                <p style="font-size: 15px; padding-top: 13px;">Price:</p>
+              </div>
+              <div class="col-4 col-md-2" style="padding-top: 10px;">
+                <input type="text" class="form-control" name="price"/>
+              </div>
+              <div class="col-4 col-md-5"></div>
+              <div class="col-2 col-md-1" style="padding-left:25px">
+                <button type="button" id="add" class="btn btn-common btn-nv-sty">
+                  Add/Update
+                </button>
+              </div>
+            </div>
+            <div class="container-fluid br-line"></div><br />
+        </div>
+        <h1 style="font-size: 30px; text-align: center;">Delete a dish from the Menu</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-4 col-md-2">
+                    <p style="font-size: 15px; padding-top: 13px;">Dish name:</p>
+                  </div>
+                <div class="col-4 col-md-3" style="padding-top: 10px;">
+                    <input type="text" class="form-control" name="Name"/>
+                </div>
+                <div class="col-1 col-md-1"></div>
+                <div class="col-1 col-md-1">
+                    <button type="button" id="delete" class="btn btn-common btn-nv-sty">
+                        Delete
+                      </button>
+                </div>
+            </div>
+            <div class="container-fluid br-line"></div><br />
+        </div>
+        <h1 style="font-size: 30px; text-align: center;">List of all dishes</h1><br />
+        <div class="container">
+          <table style="width: 100%;" id="transactions">
+            <tr>
+              <th><b>DISH NAME</b></th>
+              <th><b>DESCRIPTION</b></th>
+              <th><b>TYPE</b></th>
+              <th><b>PRICE</b></th>
+            </tr>
+            <tr>
+              <td>vjhafjhbdv</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>amvmzbvcmbdv</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+                <td>a mbscbz</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>sma bn sd</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+          </table>
+          <div class="container-fluid br-line"></div>
+        </div>
+      </section>
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="assets/js/jquery-min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.countdown.min.js"></script>
+      <script src="assets/js/jquery.nav.js"></script>
+      <script src="assets/js/jquery.easing.min.js"></script>
+      <script src="assets/js/wow.js"></script>
+      <script src="assets/js/jquery.slicknav.js"></script>
+      <script src="assets/js/nivo-lightbox.js"></script>
+      <script src="assets/js/main.js"></script>
+    </body>
+</html>
