@@ -34,27 +34,27 @@
             <div class="container">
                 <div class="section-title-header text-center">
                     <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">
-                      Transactions
+                      Orders
                     </h1>
                   </div></br>
                 <div class="row">
-                  <div class="col-1 col-md-1"></div>
-                  <div class="col-1.5">
+                  <div class="col-md-1"></div>
+                  <div class="col-2 col-md-1">
                     <p style="font-size: 15px; padding-top: 13px;">Sort by:</p>
                   </div>
-                  <div class="col-3 col-md-2" style="padding-top: 10px;">
+                  <div class="col-4 col-md-2" style="padding-top: 10px;">
                     <select name="sort" class="custom-select category">
-                        <option value="id">ID</option>
+                        <option value="id">Transaction ID</option>
                         <option value="date">Date</option>
-                        <option value="amount">Amount</option>
-                        <option value="type">Type</option>
+                        <option value="amount">customer number</option>
+                        <option value="type">Dish name</option>
                       </select>
                   </div>
-                  <div class="col-1 col-md-1.5"></div>
-                  <div class="col-1.5">
-                    <p style="font-size: 15px; padding-top: 13px;">Display transactions of :</p>
+                  <div class="col-1 col-md-1"></div>
+                  <div class="col-2 col-md-2">
+                    <p style="font-size: 15px; padding-top: 13px;">Display orders of :</p>
                   </div>
-                  <div class="col-3 col-md-1.5" style="padding-top: 10px;">
+                  <div class="col-3 col-md-2" style="padding-top: 10px;">
                     <select name="duration" class="custom-select category">
                         <option value="all">All</option>
                         <option value="today">Today</option>
@@ -67,7 +67,7 @@
                         <option value="lastyear">Last year</option>
                       </select>
                   </div>
-                  <div class="col-1"></div>
+                  <div class="col-5 col-md-1"></div>
                   <div class="col-1">
                     <button type="button" id="go" class="btn btn-common btn-nv-sty">
                       Go
@@ -76,16 +76,18 @@
                 </div>
             </div></br>
             <div class="container">
-              <table style="width: 100%;" id="transactions">
+              <table style="width: 100%;" id="orders">
                 <tr>
-                  <th><b>ID</b></th>
-                  <th><b>TYPE</b></th>
-                  <th><b>DESCRIPTION</b></th>
+                  <th><b>TRANSACTION ID</b></th>
+                  <th><b>DISH NAME</b></th>
+                  <th><b>QUANTITY</b></th>
                   <th><b>AMOUNT</b></th>
+                  <th><b>CUSTOMER MOBILE NUMBER</b></th>
                   <th><b>DATE AND TIME</b></th>
                 </tr>
                 <tr>
                   <td>1</td>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -97,6 +99,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -104,9 +107,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>4</td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
