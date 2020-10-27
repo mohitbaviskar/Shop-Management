@@ -29,6 +29,95 @@
     </head>
 
   <body>
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+              aria-controls="main-navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button>           
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="new-user.html">Create new user</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="transactions.html">Transactions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="purchases.html">Purchases</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="orders.html">Orders</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ingredients.html">Ingredients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="suppliers.html">Suppliers</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="staff.html">Staff details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="menu.html">Menu</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li>
+            <a class="page-scroll" href="dashboard.html">Dashboard</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="new-user.html">Create new user</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="transactions.html">Transactions</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="purchases.html">Purchases</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="orders.html">Orders</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="ingredients.html">Ingredients</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="suppliers.html">Suppliers</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="suppliers.html">Suppliers</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="menu.html">Menu</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+      </nav>
+      <!-- Navbar End -->
+    </header>
     <br /><br />
     <section class="section-padding">
         <div class="container">
@@ -98,13 +187,15 @@
         </div>
         <h1 style="font-size: 30px; text-align: center;">List of all employees</h1><br />
         <div class="container">
-          <table style="width: 100%;" id="employee">
+          <table style="width: 100%;" id="employee" class="styled-table">
+            <thead>
             <tr>
-              <th><b>NAME</b></th>
-              <th><b>MOBILE NUMBER</b></th>
-              <th><b>DESIGNATION</b></th>
-              <th><b>SALARY</b></th>
+              <th>Name</th>
+              <th>Mobile number</th>
+              <th>Designation</th>
+              <th>Salary</th>
             </tr>
+            </thead>
             <tr>
               <td>vjhafjhbdv</td>
               <td></td>

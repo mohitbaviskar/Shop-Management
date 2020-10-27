@@ -28,15 +28,47 @@ h4 {
   font-family: "Josefin Sans", sans-serif;
 }
 
-table,
+/* table,
 tr,
 th,
 td {
   border: 2px solid #016168;
   border-collapse: collapse;
   text-align: center;
+} */
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.3em !important;
+  font-family: sans-serif !important;
+  /* min-width: 400px; */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 
+.styled-table thead tr {
+  background-color: #007dab;
+  color: #ffffff;
+  /* text-align: left; */
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #007dab;
+}
 
 a {
   -webkit-transition: all 0.2s linear;
@@ -60,17 +92,17 @@ p {
   font-size: 14px;
 }
 
-ul,
+/* ul,
 ol {
   list-style: outside none none;
   margin: 0;
   padding: 0;
-}
+} */
 
-ul li,
+/* ul li,
 ol li {
   list-style: none;
-}
+} */
 
 .hero-heading {
   font-size: 40px;
@@ -2562,8 +2594,8 @@ h6.head-label {
   text-align: left;
   padding: 5px 0px 5px 10px;
 }
-.hight {
-  height: 155px;
+.height {
+  height: 180px;
 }
 .tp {
   margin-top: 25px;

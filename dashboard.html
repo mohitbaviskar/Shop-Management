@@ -53,13 +53,13 @@
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="dashboard.html">Dashboard</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="new-user.html">Create new user</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="transactions.html">Transactions</a>
               </li>
               <li class="nav-item">
@@ -118,95 +118,76 @@
       </nav>
       <!-- Navbar End -->
     </header>
-        <br /><br />
-        <section class="section-padding">
-            <div class="container">
-                <div class="section-title-header text-center">
-                    <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">
-                      Transactions
-                    </h1>
-                  </div></br>
-                <div class="row">
-                  <div class="col-1 col-md-1"></div>
-                  <div class="col-1.5">
-                    <p style="font-size: 15px; padding-top: 13px;">Sort by:</p>
-                  </div>
-                  <div class="col-3 col-md-2" style="padding-top: 10px;">
-                    <select name="sort" class="custom-select category">
-                        <option value="id">ID</option>
-                        <option value="date">Date</option>
-                        <option value="amount">Amount</option>
-                        <option value="type">Type</option>
-                      </select>
-                  </div>
-                  <div class="col-1 col-md-1.5"></div>
-                  <div class="col-1.5">
-                    <p style="font-size: 15px; padding-top: 13px;">Display transactions of :</p>
-                  </div>
-                  <div class="col-3 col-md-1.5" style="padding-top: 10px;">
-                    <select name="duration" class="custom-select category">
-                        <option value="all">All</option>
-                        <option value="today">Today</option>
-                        <option value="yesterday">Yesterday</option>
-                        <option value="thisweek">This week</option>
-                        <option value="lastweek">Last week</option>
-                        <option value="thismonth">This month</option>
-                        <option value="lastmonth">Last month</option>
-                        <option value="thisyear">This year</option>
-                        <option value="lastyear">Last year</option>
-                      </select>
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="col-1">
-                    <button type="button" id="go" class="btn btn-common btn-nv-sty">
-                      Go
-                    </button>
-                  </div>
-                </div>
-            </div></br>
-            <div class="container">
-              <table style="width: 100%;" id="transactions" class="styled-table">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Type</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th>Date and Time</th>
-                </tr>
-                </thead>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-              </table>
-              <div class="container-fluid br-line"></div>
+    
+    <section id="pricing" class="section section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center"><br />
+              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                DASHBOARD
+              </h1>
             </div>
-          </section>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-12 col-md-4" style="margin-top: 25px;">
+            <div class="price-block-wrapper wow fadeInLeft height box-bkclr" data-wow-delay="0.2s">
+              <div class="title">
+                <h5>TOTAL EARNINGS FROM ORDERS</h5>
+              </div>
+              <div class="p-prar">
+                <p>Sample text</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-12 col-md-4" style="margin-top: 25px;">
+            <div class="price-block-wrapper wow fadeInLeft height box-bkclr" data-wow-delay="0.2s">
+              <div class="title">
+                <h5>TOTAL EXPENDITURE FROM PURCHASES</h5>
+              </div>
+              <div class="p-prar">
+                <p>Sample text</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-12 col-md-4" style="margin-top: 25px;">
+            <div class="price-block-wrapper wow fadeInLeft height box-bkclr" data-wow-delay="0.2s">
+              <div class="title">
+                <h5>TOTAL NUMBER OF TRANSACTIONS</h5>
+              </div>
+              <div class="p-prar">
+                <p>Sample text</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-12 col-md-4" style="margin-top: 25px;">
+            <div class="price-block-wrapper wow fadeInLeft height box-bkclr" data-wow-delay="0.2s">
+              <div class="title">
+                <h5>CURRENT NUMBER OF EMPLOYEES</h5>
+              </div>
+              <div class="p-prar">
+              
+                  <ul style="list-style: disc; color: #5c5c5c;">
+                    <li style="text-align: left;">Cooks:</li>
+                    <li style="text-align: left;">Waiters:</li>
+                    <li style="text-align: left;">Cashiers:</li>
+                    <li style="text-align: left;">Cleaners:</li>
+                    <li style="text-align: left;">Maintenance people:</li>
+                  </ul>               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="assets/js/jquery-min.js"></script>
