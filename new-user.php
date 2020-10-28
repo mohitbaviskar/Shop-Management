@@ -1,0 +1,245 @@
+<?php
+include_once ('root.php');
+if(isset($_POST['newentry'])){
+  $email=$_POST['useremail'];
+  $enumber=$_POST['mobile'];
+  $position=$_POST['sort'];
+  $pass=$_POST['password'];
+  $sql1="INSERT INTO users VALUES ('$email','$pass','$position','$enumber')";
+  $result=mysqli_query($link,$sql1);
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <title>Shop Management System</title>
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <!-- Icon -->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+        <!-- Slicknav -->
+        <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+        <!-- Nivo Lightbox -->
+        <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+        <!-- Animate -->
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+        <!-- Main Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <!-- Responsive Style -->
+        <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+        <!--fa fa icon-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+      <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#main-navbar"
+              aria-controls="main-navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button>           
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end">
+              <li class="nav-item active">
+                <a class="nav-link" href="dashboard.php">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="new-user.php">Create new user</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="transactions.php">Transactions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="purchases.php">Purchases</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="orders.php">Orders</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ingredients.php">Ingredients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="suppliers.php">Suppliers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="staff.php">Staff details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="menu.php">Menu</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Start -->
+        <ul class="mobile-menu">
+          <li>
+            <a class="page-scroll" href="dashboard.php">Dashboard</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="new-user.php">Create new user</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="transactions.php">Transactions</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="purchases.php">Purchases</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="orders.php">Orders</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="ingredients.php">Ingredients</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="suppliers.php">Suppliers</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="menu.php">Menu</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+      </nav>
+      <!-- Navbar End -->
+    </header>
+
+    <br /><br /><br />
+        <!-- form -->
+        <section id="form-dom" class="services">
+          <div class="container" style="margin-bottom: 30px;">
+            <div class="row">
+              <div class="col-12">
+                <div class="col-12 col-md-5 log-style">
+                  <div id="form-main">
+                    <h1
+                      class="section-title wow fadeInUp animated"
+                      data-wow-delay="0.2s"
+                      style="
+                        visibility: visible;
+                        -webkit-animation-delay: 0.2s;
+                        -moz-animation-delay: 0.2s;
+                        animation-delay: 0.2s;
+                      "
+                    >
+                      Create new User
+                    </h1>
+                    <div class="design">
+                      <form id="register-form" action="" method="POST">
+                        <h3></h3>
+                        <div class="row">
+                          <div class="col">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Email ID"
+                              name="useremail"
+                            />
+                          </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Mobile Number"
+                                name="mobile"
+                              />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <select name="sort" class="custom-select category">
+                                    <option value="employee">Employee</option>
+                                    <option value="owner">Owner</option>
+                                  </select>
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Password"
+                                name="password"
+                              />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Confirm Password"
+                                name="confirmpassword"
+                              />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 col-md-4"></div>
+                            <div class="col-6 col-md-3">
+                                <button
+                                  name="newentry"
+                                  type="submit"
+                                  href=""
+                                  class="btn btn-common btn-nv-sty"                                 
+                                >
+                                  Create User
+                                </button>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                          <div class="col">
+                            <p class="error text-danger" align="center"></p>
+                            <p class="success text-success" align="center"></p>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="assets/js/jquery-min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.countdown.min.js"></script>
+      <script src="assets/js/jquery.nav.js"></script>
+      <script src="assets/js/jquery.easing.min.js"></script>
+      <script src="assets/js/wow.js"></script>
+      <script src="assets/js/jquery.slicknav.js"></script>
+      <script src="assets/js/nivo-lightbox.js"></script>
+      <script src="assets/js/main.js"></script>
+    </body>
+  </html>
+  
