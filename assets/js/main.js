@@ -147,3 +147,30 @@
     });
   });
 })(jQuery);
+
+$("#order-add-dish").click(function () {
+  var markup = `<tr>
+              <td><input
+                    type="text"
+                    class="form-control"
+                    name="object"
+                    placeholder="Enter dish name here"
+                  /></td>
+              <td><input
+                   type="text"
+                   class="form-control"
+                   name="object"
+                   placeholder="Enter quantity here"
+                  /></td>
+              <td>
+                  
+                  <button
+                      type="button"
+                      href=""
+                      class="btn btn-common btn-nv-sty"
+                      onclick="$(this).parent().parent().remove()">Delete</button>
+              </td>
+          </tr>`;
+
+  $(this).parent().siblings("#orders").append(markup);
+});

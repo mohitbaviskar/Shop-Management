@@ -70,7 +70,7 @@ if(isset($_POST['insert'])){
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
               </li>
               <li class="nav-item">
@@ -88,7 +88,7 @@ if(isset($_POST['insert'])){
               <li class="nav-item">
                 <a class="nav-link" href="ingredients.php">Ingredients</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="suppliers.php">Suppliers</a>
               </li>
               <li class="nav-item">
