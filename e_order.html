@@ -145,49 +145,27 @@
                       <div class="container-fluid br-line"></div>
                       <div class="design"><br />
                         <h1 style="font-size: 30px; text-align: center;">New order</h1>
-                        <table style="width: 100%;" id="orders" class="styled-table">
-                        <thead>
-                          <tr>
-                            <th>Dish name</th>
-                            <th>Quantity</th>
-                            <th>Delete</th>
-                          </tr>
-                        </thead>
-                          <tr>
-                            <td>
-                              <input
-                                type="text"
-                                class="form-control"
-                                name="dish"
-                                placeholder="Enter dish name here"
-                              />
-                            </td>
-                            <td>
-                              <input
-                                type="text"
-                                class="form-control"
-                                name="quantity"
-                                placeholder="Enter quantity here"
-                              />
-                            </td>
-                            <td><button
-                                type="button"
-                                href=""
-                                class="btn btn-common btn-nv-sty"
-                                onclick="$(this).parent().parent().remove()">Delete</button></td>
-                          </tr>
-                        </table>
-                        <div style="text-align: center;">
-                          <a
-                            style="
-                              color: #016168;
-                              font-size: large;
-                              cursor: pointer;
-                              padding: 5px;
-                            "
-                            id="order-add-dish"
-                            ><i class="fa fa-plus"></i
-                          ></a>
+                        <div class="row">
+                          <div class="col-4 col-md-2">
+                            <p style="font-size: 15px; padding-top: 13px;">Customer mobile number:</p>
+                          </div>
+                          <div class="col-5 col-md-2" style="padding-top: 10px;">
+                              <input type="text" class="form-control" name="customernumber"/>
+                          </div>
+                          <div class="col-md-1"></div>
+                          <div class="col-4 col-md-1">
+                              <p style="font-size: 15px; padding-top: 13px;">Dish name:</p>
+                          </div>
+                          <div class="col-5 col-md-2" style="padding-top: 10px;">
+                              <input type="text" class="form-control" name="dishname"/>
+                          </div>
+                          <div class="col-md-1"></div>
+                          <div class="col-4 col-md-1">
+                              <p style="font-size: 15px; padding-top: 13px;">Quantity:</p>
+                          </div>
+                          <div class="col-5 col-md-2" style="padding-top: 10px;">
+                              <input type="text" class="form-control" name="quantity"/>
+                          </div>
                         </div><br />
                         <div style="text-align: center;">
                           <button type="button" id="submit" class="btn btn-common btn-nv-sty">

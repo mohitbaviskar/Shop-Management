@@ -149,6 +149,25 @@ include_once ('root.php');
           </div>
         </div>
         <div class="row">
+          <div class="col-md-4"  style="margin-top: 25px;"></div>
+          <div class="col-12 col-md-4" style="margin-top: 25px;">
+            <div class="price-block-wrapper wow fadeInLeft height box-bkclr2" data-wow-delay="0.2s">
+              <div class="title">
+                <h5>Ingredients Running out!</h5>
+              </div>
+              <div class="p-prar">
+                <ul style="list-style: disc; color: #5c5c5c;">
+                  <li style="text-align: left;"></li>
+                  <li style="text-align: left;"></li>
+                  <li style="text-align: left;"></li>
+                  <li style="text-align: left;"></li>
+                  <li style="text-align: left;"></li>
+                </ul>               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-1"></div>
           <div class="col-12 col-md-4" style="margin-top: 25px">
             <div
