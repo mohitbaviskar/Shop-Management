@@ -4,14 +4,13 @@ if(isset($_POST['insert'])){
   $sname=$_POST['suppliername'];
   $snumber=$_POST['suppliernumber'];
   $iname=$_POST['ingredientsupplied'];
-  // $iquantity=0;
-  // $sql3="INSERT INTO ingredients VALUES ('$iname','$iquantity')";
-  // $result = mysqli_query($link,$sql3);
-  $sql1="INSERT INTO ingredient_supplier VALUES ('$iname','$snumber')";
-  $result1 = mysqli_query($link,$sql1);
+  $iquantity=0;
+  $sql3="INSERT INTO ingredients VALUES ('$iname','$iquantity')";
+  $result = mysqli_query($link,$sql3);
   $sql2="INSERT INTO supplier_info VALUES ('$sname','$snumber')";
   $result2 = mysqli_query($link,$sql2);
-  header('Location: suppliers.php');
+  $sql1="INSERT INTO ingredient_supplier VALUES ('$iname','$snumber')";
+  $result1 = mysqli_query($link,$sql1);
 }
 ?>
 
@@ -174,6 +173,11 @@ if(isset($_POST['insert'])){
             <h1 style="font-size: 30px; text-align: center;">List of all suppliers</h1>
             <div class="container">
               <table style="width: 100%;" id="transactions" class="styled-table">
+                <?php
+                    $sql2 = "SELECT * FROM supplier_info,ingredient_supplier where supplier_info.s_number=ingredient_supplier.s_number";
+                    if($result = mysqli_query($link,$sql2)){
+                        if(mysqli_num_rows($result) > 0){
+                ?>
                 <thead>
                 <tr>
                   <th>Supplier name</th>
@@ -182,9 +186,6 @@ if(isset($_POST['insert'])){
                 </tr>
                 </thead>
                 <?php
-                    $sql2 = "SELECT * FROM supplier_info,ingredient_supplier where supplier_info.s_number=ingredient_supplier.s_number";
-                    if($result = mysqli_query($link,$sql2)){
-                        if(mysqli_num_rows($result) > 0){
                         while($row = mysqli_fetch_array($result)){
                             $dname = $row['s_name'];
                             $ddesc = $row['s_number'];

@@ -166,6 +166,11 @@ include_once ('root.php');
             </div></br>
             <div class="container">
               <table style="width: 100%;" id="orders" class="styled-table">
+                <?php
+                $sql2 = "SELECT * FROM orders";
+                if($result = mysqli_query($link,$sql2)){
+                    if(mysqli_num_rows($result) > 0){
+                ?>
                 <thead>
                 <tr>
                   <th>Transaction ID</th>
@@ -177,9 +182,6 @@ include_once ('root.php');
                 </tr>
                 </thead>
                 <?php
-                $sql2 = "SELECT * FROM orders";
-                if($result = mysqli_query($link,$sql2)){
-                    if(mysqli_num_rows($result) > 0){
                       while($row = mysqli_fetch_array($result)){
                         $dname = $row['t_id'];
                         $ddesc = $row['d_name'];

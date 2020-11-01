@@ -3,12 +3,19 @@ include_once ('root.php');
 if(isset($_POST['log'])){
     $nam=$_POST["login-email"];
     $pass=$_POST["login-password"];
-
-    $sql="SELECT email,password from users where email='$nam' AND password='$pass'";
-
+    $utype = '';
+    $sql="SELECT email,password,u_type from users where email='$nam' AND password='$pass'";
     if($result = mysqli_query($link,$sql)){
         if(mysqli_num_rows($result) == 1){
-            header('Location: dashboard.php');
+          while($row = mysqli_fetch_array($result)){
+            $utype = $row['u_type'];
+            if($utype == 'owner'){
+              header('Location: dashboard.php');
+            }
+            else{
+              header('Location: e_order.html');
+            }
+          } 
         }
         else if(mysqli_num_rows($result) == 0){
             echo '<h5 style="text-align:center;background-color:red;" >INVALID LOGIN ID OR PASSWORD</h5>';

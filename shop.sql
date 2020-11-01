@@ -22,7 +22,7 @@ CREATE TABLE ingredients(
     i_quantity int(10),
     PRIMARY KEY(i_name));
 CREATE TABLE transaction(
-    t_id varchar(10),
+    t_id int NOT NULL AUTO_INCREMENT,
     t_type varchar(10),
     t_description varchar(20),
     t_amount int(10),

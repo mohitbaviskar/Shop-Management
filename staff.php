@@ -30,6 +30,8 @@ if(isset($_POST['delete'])){
   if(mysqli_num_rows($result) == 1){
     $sql2="DELETE FROM staff_details WHERE e_number='$enumber' AND e_name='$ename'";
     $result1 = mysqli_query($link,$sql2);
+    $sql3="DELETE FROM users WHERE u_number='$enumber'";
+    $result2=mysqli_query($link,$sql3);
   }
 }
 ?>
@@ -225,6 +227,11 @@ if(isset($_POST['delete'])){
         <h1 style="font-size: 30px; text-align: center;">List of all employees</h1><br />
         <div class="container">
           <table style="width: 100%;" id="employee" class="styled-table">
+            <?php
+                $sql2 = "SELECT * FROM staff_details";
+                if($result = mysqli_query($link,$sql2)){
+                    if(mysqli_num_rows($result) > 0){
+            ?>
             <thead>
             <tr>
               <th>Name</th>
@@ -234,9 +241,6 @@ if(isset($_POST['delete'])){
             </tr>
             </thead>
             <?php
-                $sql2 = "SELECT * FROM staff_details";
-                if($result = mysqli_query($link,$sql2)){
-                    if(mysqli_num_rows($result) > 0){
                       while($row = mysqli_fetch_array($result)){
                         $dname = $row['e_number'];
                         $ddesc = $row['designation'];
@@ -244,9 +248,9 @@ if(isset($_POST['delete'])){
                         $dprice = $row['salary'];
             ?>
             <tr>
+              <td><?php echo $dtype; ?></td>
               <td><?php echo $dname; ?></td>
               <td><?php echo $ddesc; ?></td>
-              <td><?php echo $dtype; ?></td>
               <td><?php echo $dprice; ?></td>
             </tr>
             <?php

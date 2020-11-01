@@ -1,22 +1,33 @@
 <?php
 include_once ('root.php');
-// if(isset($_POST['insert'])){
-//   $dname=$_POST['dishname'];
-//   $sql1="SELECT d_name FROM MENU WHERE d_name='$dname'";
-//   $result = mysqli_query($link,$sql1);
-//   if(mysqli_num_rows($result) == 1){
-//     $dprice=$_POST['price'];
-//     $sql2="UPDATE MENU SET d_price='$dprice' WHERE d_name='$dname'";
-//     $result1 = mysqli_query($link,$sql2);
-//   }
-//   else{
-//     $dprice=$_POST['price'];
-//     $dtype=$_POST['type'];
-//     $ddesc=$_POST['description'];
-//     $sql3="INSERT INTO MENU VALUES ('$dname', '$ddesc', '$dtype', '$dprice')";
-//     $result2 = mysqli_query($link,$sql3);
-//   }
-// }
+if(isset($_POST['add'])){
+  $ingredientname=$_POST['ingredientname'];
+  $supplierno=$_POST['suppliernumber'];
+  $quantity=$_POST['quantity'];
+  $amt=$_POST['amount'];
+  $iquantity=$quantity;
+  $sql6="INSERT INTO ingredients VALUES ('$ingredientname','$iquantity')";
+  $result = mysqli_query($link,$sql6);
+  $sql7="INSERT INTO supplier_info (s_number) VALUES ('$supplierno')";
+  $result2 = mysqli_query($link,$sql7);
+  $sql8="INSERT INTO ingredient_supplier VALUES ('$ingredientname','$supplierno')";
+  $result1 = mysqli_query($link,$sql8);
+  $sql = "INSERT INTO transaction (t_type,t_amount) VALUES ('payment','$amt')";
+  $result = mysqli_query($link,$sql);
+  $sql1="SELECT MAX(t_id) as last FROM transaction";
+  $result2 = mysqli_query($link,$sql1);
+  $row = mysqli_fetch_array($result2);
+  $last = $row['last'];
+  $sql2="SELECT t_id,t_timestamp FROM transaction WHERE t_id='$last'";
+  $result3=mysqli_query($link,$sql2);
+  $row = mysqli_fetch_array($result3);
+  $tid=$row['t_id'];
+  $ctime=$row['t_timestamp'];
+  $sql4="INSERT INTO purchase (i_name,p_quantity,t_id,p_amount,p_timestamp,s_number) VALUES ('$ingredientname','$quantity','$tid','$amt','$ctime','$supplierno')";
+  $result4=mysqli_query($link,$sql4);
+  $sql5="UPDATE ingredients SET i_quantity=i_quantity+$quantity WHERE i_name='$ingredientname'";
+  $result6=mysqli_query($link,$sql5);
+}
 ?>
 
 
@@ -148,8 +159,8 @@ include_once ('root.php');
                     </h1>
                   </div></br>
                   <h1 style="font-size: 30px; text-align: center;">Enter new purchase details</h1>
+                    <form action="" method="POST">
                     <div class="row">
-
                     <div class="col-2 col-md-1">
                         <p style="font-size: 15px; padding-top: 13px;">Ingredient name:</p>
                     </div>
@@ -177,12 +188,13 @@ include_once ('root.php');
                     </div>
                     <div class="col-4 col-md-5"></div>
                     <div class="col-2 col-md-1" style="padding-left:25px">
-                        <button type="button" id="add" class="btn btn-common btn-nv-sty">
+                        <button name="add" type="submit" id="add" class="btn btn-common btn-nv-sty">
                         Add/Update
                         </button>
                     </div>
                     </div>
                     <div class="container-fluid br-line"></div><br />
+                    </form>
                 </div>
                 <h1 style="font-size: 30px; text-align: center;">List of purchases</h1><br />
                 <div class="row">
@@ -225,6 +237,11 @@ include_once ('root.php');
             </div></br>
             <div class="container">
               <table style="width: 100%;" id="purchases" class="styled-table">
+                <?php
+                $sql2 = "SELECT * FROM purchase";
+                if($result = mysqli_query($link,$sql2)){
+                    if(mysqli_num_rows($result) > 0){
+                ?>
                 <thead>
                 <tr>
                   <th>Transaction ID</th>
@@ -236,9 +253,6 @@ include_once ('root.php');
                 </tr>
                 </thead>
                 <?php
-                $sql2 = "SELECT * FROM purchase";
-                if($result = mysqli_query($link,$sql2)){
-                    if(mysqli_num_rows($result) > 0){
                       while($row = mysqli_fetch_array($result)){
                         $dname = $row['t_id'];
                         $ddesc = $row['i_name'];

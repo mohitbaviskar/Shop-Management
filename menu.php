@@ -219,6 +219,11 @@ if(isset($_POST['delete'])){
         <h1 style="font-size: 30px; text-align: center;">List of all dishes</h1><br />
         <div class="container">
           <table style="width: 100%;" id="menu" class="styled-table">
+            <?php
+                $sql2 = "SELECT * FROM menu";
+                if($result = mysqli_query($link,$sql2)){
+                    if(mysqli_num_rows($result) > 0){
+            ?>
             <thead>
             <tr>
               <th>Dish name</th>
@@ -228,9 +233,6 @@ if(isset($_POST['delete'])){
             </tr>
             </thead>
             <?php
-                $sql2 = "SELECT * FROM menu";
-                if($result = mysqli_query($link,$sql2)){
-                    if(mysqli_num_rows($result) > 0){
                       while($row = mysqli_fetch_array($result)){
                         $dname = $row['d_name'];
                         $ddesc = $row['d_description'];

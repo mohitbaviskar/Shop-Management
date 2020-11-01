@@ -159,7 +159,19 @@ include_once ('root.php');
                 <h5>TOTAL EARNINGS FROM ORDERS</h5>
               </div>
               <div class="p-prar">
-                <p>Sample text</p>
+              <?php
+                $c = 0;
+                $sql = "SELECT sum(o_amount) AS value_sum FROM orders";
+                $result=mysqli_query($link,$sql);
+                if($result = mysqli_query($link,$sql)){
+                  if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_array($result)){
+                      $c = $row['value_sum'];
+                    }
+                  }
+                }
+              ?>
+                <p><?php echo $c; ?></p>                
               </div>
             </div>
           </div>
@@ -173,7 +185,19 @@ include_once ('root.php');
                 <h5>TOTAL EXPENDITURE FROM PURCHASES</h5>
               </div>
               <div class="p-prar">
-                <p>Sample text</p>
+              <?php
+                $c = 0;
+                $sql = "SELECT sum(p_amount) AS value_sum FROM purchase";
+                $result=mysqli_query($link,$sql);
+                if($result = mysqli_query($link,$sql)){
+                  if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_array($result)){
+                      $c = $row['value_sum'];
+                    }
+                  }
+                }
+              ?>
+                <p><?php echo $c; ?></p>
               </div>
             </div>
           </div>
@@ -210,12 +234,25 @@ include_once ('root.php');
                 <h5>CURRENT NUMBER OF EMPLOYEES</h5>
               </div>
               <div class="p-prar">
-                <ul style="list-style: disc; color: #5c5c5c">
+                <!-- <ul style="list-style: disc; color: #5c5c5c">
                   <li style="text-align: left">Cooks:</li>
                   <li style="text-align: left">Waiters:</li>
                   <li style="text-align: left">Cashiers:</li>
                   <li style="text-align: left">Cleaners:</li>
                   <li style="text-align: left">Maintenance people:</li>
+                </ul> -->
+                <ul>
+                <?php
+                  $sql="SELECT designation,count(designation) AS count_val FROM staff_details GROUP BY designation";
+                  $result = mysqli_query($link,$sql);
+                  while($row=mysqli_fetch_array($result)){
+                    $etype=$row['designation'];
+                    $count=$row['count_val'];
+                ?>
+                  <li style="text-align: left"><?php echo $etype;?> => <?php echo $count;?></li>
+                <?php
+                  }
+                ?>
                 </ul>
               </div>
             </div>

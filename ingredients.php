@@ -152,6 +152,11 @@ include_once ('root.php');
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <table style="width: 100%;" id="ingredients" class="styled-table">
+                          <?php
+                          $sql = "SELECT * from ingredients";
+                          if($result = mysqli_query($link,$sql)){
+                            if(mysqli_num_rows($result) > 0){
+                          ?>
                           <thead>
                             <tr>
                               <th>Name</th>
@@ -159,11 +164,7 @@ include_once ('root.php');
                             </tr>
                           </thead>
                           <?php
-                          $sql = "SELECT * from ingredients";
-                          if($result = mysqli_query($link,$sql)){
-                            if(mysqli_num_rows($result) > 0){
                               while($row = mysqli_fetch_array($result)){
-                                echo $row['i_name'];
                                 $i = $row['i_name'];
                                 $q = $row['i_quantity'];
                         ?>
@@ -176,7 +177,7 @@ include_once ('root.php');
                             }
                           }
                         ?>
-                          </table>
+                      </table>
                     </div>
                 </div>             
               <div class="container-fluid br-line"></div>
