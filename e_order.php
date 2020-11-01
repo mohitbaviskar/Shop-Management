@@ -1,6 +1,63 @@
 <?php
 include_once ('root.php');
 if(isset($_POST['order'])){
+  $b = 0;
+  $dish = $_POST['dishname'];
+  $quantity = $_POST['quantity'];
+  $cno = $_POST['customernumber'];
+  $sql="SELECT ingredients.i_quantity,requirements.r_quantity FROM ingredients,requirements WHERE ingredients.i_name = requirements.i_name and requirements.i_name in (SELECT ingredients.i_name FROM requirements WHERE d_name='$dish')";
+  if($res = mysqli_query($link,$sql)){ 
+    if(mysqli_num_rows($res) > 0){
+      while($row = mysqli_fetch_array($res)){
+        if($row['i_quantity'] > ($row['r_quantity']*$quantity))
+        {
+          continue;
+        }
+        else{
+          $b = 1;
+          break;
+        }
+      }
+    }
+  }
+  if($b == 1){
+    echo "<h4>Not sufficient ingredients</h4>";
+  }
+  else{
+    $sql1="SELECT ingredients.i_quantity,requirements.r_quantity,ingredients.i_name FROM ingredients,requirements WHERE ingredients.i_name = requirements.i_name and requirements.i_name in (SELECT ingredients.i_name FROM requirements WHERE d_name='$dish')";
+    if($res1 = mysqli_query($link,$sql1)){ 
+      if(mysqli_num_rows($res1) > 0){
+        while($row = mysqli_fetch_array($res1)){
+          $sub=$row['r_quantity']*$quantity;
+          $iname = $row['i_name'];
+          $sql2="UPDATE ingredients SET i_quantity=i_quantity-$sub WHERE i_name='$iname'";
+          $res2 = mysqli_query($link,$sql2);
+        }
+      }
+    }
+    $sql3 = "SELECT d_price FROM menu WHERE d_name='$dish'";
+    $res3 = mysqli_query($link,$sql3);
+    $amt = 0;
+    if($row = mysqli_fetch_array($res3)){
+      $amt = $quantity * $row['d_price'];
+    }
+    $des=$dish." quantity-".strval($quantity)." customerno-".strval($cno)." amount-".strval($amt);
+    $sql4 = "INSERT INTO transaction (t_type,t_description,t_amount) VALUES ('bill','$des','$amt')";
+    $result4 = mysqli_query($link,$sql4);
+    $sql5="SELECT MAX(t_id) as last FROM transaction";
+    $result5 = mysqli_query($link,$sql5);
+    $row = mysqli_fetch_array($result5);
+    $last = $row['last'];
+    $sql6="SELECT t_id,t_timestamp FROM transaction WHERE t_id='$last'";
+    $result6=mysqli_query($link,$sql6);
+    $row = mysqli_fetch_array($result6);
+    $tid=$row['t_id'];
+    $ctime=$row['t_timestamp'];
+    $sql7="INSERT INTO orders (d_name,o_quantity,t_id,o_amount,o_timestamp,c_number) VALUES ('$dish','$quantity','$tid','$amt','$ctime','$cno')";
+    $result7=mysqli_query($link,$sql7);
+    $sql8 = "UPDATE customers SET frequency=frequency + 1 WHERE c_number='$cno'";
+    $res8= mysqli_query($link,$sql8);
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -59,16 +116,16 @@ if(isset($_POST['order'])){
             <div class="collapse navbar-collapse" id="main-navbar">
               <ul class="navbar-nav mr-auto w-100 justify-content-end">
                 <li class="nav-item active">
-                  <a class="nav-link" href="e_order.html">Orders</a>
+                  <a class="nav-link" href="e_order.php">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="e_menu.html">Menu</a>
+                    <a class="nav-link" href="e_menu.php">Menu</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="e_ingredients.html">Ingredients</a>
+                  <a class="nav-link" href="e_ingredients.php">Ingredients</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="e_requirements.html">Requirements</a>
+                  <a class="nav-link" href="e_requirements.php">Requirements</a>
                 </li>
               </ul>
             </div>
@@ -77,16 +134,16 @@ if(isset($_POST['order'])){
           <!-- Mobile Menu Start -->
           <ul class="mobile-menu">
             <li>
-              <a class="page-scroll" href="e_order.html">Orders</a>
+              <a class="page-scroll" href="e_order.php">Orders</a>
             </li>
             <li>
-              <a class="page-scroll" href="e_menu.html">Menu</a>
+              <a class="page-scroll" href="e_menu.php">Menu</a>
             </li>
             <li>
-              <a class="page-scroll" href="e_ingredients.html">Ingredients</a>
+              <a class="page-scroll" href="e_ingredients.php">Ingredients</a>
             </li>
             <li>
-              <a class="page-scroll" href="e_requirements.html">Requirements</a>
+              <a class="page-scroll" href="e_requirements.php">Requirements</a>
             </li>
           </ul>
           <!-- Mobile Menu End -->
@@ -136,11 +193,11 @@ if(isset($_POST['order'])){
                               $cno = $row['c_number'];
                               $freq=$row['frequency'];
                               $cname = $row['c_name'];
-                              echo "<h4 style="text-align:center;">Record found : {$cno}   {$cname}    {$freq} </h4>";
+                              echo "<h4>Record found : {$cno}   {$cname}    {$freq} </h4>";
                             }
                           }
                           else{
-                            echo "<h4 style="text-align:center; color: red"> NO customer found </h4>";
+                            echo "<h4> NO customer found </h4>";
                           }
                         }
                       ?>
@@ -179,7 +236,7 @@ if(isset($_POST['order'])){
                           $freq = 1;
                           $sql1 = "INSERT INTO customers VALUES ('$mobile','$name','$freq')";
                           $res= mysqli_query($link,$sql1);
-                          echo "<h4 style="text-align:center;"> CUSTOMER ADDED</h4>";
+                          echo "<h4> CUSTOMER ADDED</h4>";
                         }
                       ?>
                       <div class="container-fluid br-line"></div>
@@ -209,11 +266,12 @@ if(isset($_POST['order'])){
                           </div>
                         </div><br />
                         <div style="text-align: center;">
-                          <button type="button" id="submit" class="btn btn-common btn-nv-sty">
+                          <button name="order" type="submit" id="submit" class="btn btn-common btn-nv-sty">
                             Submit
                           </button>
                         </div>
                       </div>
+                      </form>
                       <br />
                     <div class="container-fluid br-line"></div>
               </div>

@@ -157,11 +157,17 @@ include_once ('root.php');
               </div>
               <div class="p-prar">
                 <ul style="list-style: disc; color: #5c5c5c;">
-                  <li style="text-align: left;"></li>
-                  <li style="text-align: left;"></li>
-                  <li style="text-align: left;"></li>
-                  <li style="text-align: left;"></li>
-                  <li style="text-align: left;"></li>
+                <?php
+                  $sql="SELECT i_name,i_quantity FROM ingredients WHERE i_quantity < 10";
+                  $result = mysqli_query($link,$sql);
+                  while($row=mysqli_fetch_array($result)){
+                    $etype=$row['i_name'];
+                    $count=$row['i_quantity'];
+                ?>
+                  <li style="text-align: left"><?php echo $etype;?> == <?php echo $count;?></li>
+                <?php
+                  }
+                ?>
                 </ul>               
               </div>
             </div>

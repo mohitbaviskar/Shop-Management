@@ -12,7 +12,8 @@ if(isset($_POST['add'])){
   $result2 = mysqli_query($link,$sql7);
   $sql8="INSERT INTO ingredient_supplier VALUES ('$ingredientname','$supplierno')";
   $result1 = mysqli_query($link,$sql8);
-  $sql = "INSERT INTO transaction (t_type,t_amount) VALUES ('payment','$amt')";
+  $des=$ingredientname." quantity-".strval($quantity)." supplierno-".strval($supplierno)." amount-".strval($amt);
+  $sql = "INSERT INTO transaction (t_type,t_description,t_amount) VALUES ('payment','$des','$amt')";
   $result = mysqli_query($link,$sql);
   $sql1="SELECT MAX(t_id) as last FROM transaction";
   $result2 = mysqli_query($link,$sql1);

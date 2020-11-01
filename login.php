@@ -13,7 +13,7 @@ if(isset($_POST['log'])){
               header('Location: dashboard.php');
             }
             else{
-              header('Location: e_order.html');
+              header('Location: e_order.php');
             }
           } 
         }

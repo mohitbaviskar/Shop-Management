@@ -74,16 +74,16 @@ include_once ('root.php');
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
               <li class="nav-item">
-                <a class="nav-link" href="e_order.html">Orders</a>
+                <a class="nav-link" href="e_order.php">Orders</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="e_menu.html">Menu</a>
+                <a class="nav-link" href="e_menu.php">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="e_ingredients.html">Ingredients</a>
+                <a class="nav-link" href="e_ingredients.php">Ingredients</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="e_requirements.html">Requirements</a>
+                <a class="nav-link" href="e_requirements.php">Requirements</a>
               </li>
             </ul>
           </div>
@@ -92,16 +92,16 @@ include_once ('root.php');
         <!-- Mobile Menu Start -->
         <ul class="mobile-menu">
           <li>
-            <a class="page-scroll" href="e_order.html">Orders</a>
+            <a class="page-scroll" href="e_order.php">Orders</a>
           </li>
           <li>
-            <a class="page-scroll" href="e_menu.html">Menu</a>
+            <a class="page-scroll" href="e_menu.php">Menu</a>
           </li>
           <li>
-            <a class="page-scroll" href="e_ingredients.html">Ingredients</a>
+            <a class="page-scroll" href="e_ingredients.php">Ingredients</a>
           </li>
           <li>
-            <a class="page-scroll" href="e_requirements.html">Requirements</a>
+            <a class="page-scroll" href="e_requirements.php">Requirements</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
