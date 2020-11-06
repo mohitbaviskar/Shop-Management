@@ -18,7 +18,7 @@ Owner privileges:
 7) Create a new user(owner or employee) who can login to this system and use it.
 
 Employee privileges:
-1) Allow employees to take new orders by entering just the customer phone number, dish name and quantity(the amount will be calculated automatically). Simultaneously, customer database will also be updated automatically.
+1) Allow employees to take new orders by entering just the customer phone number, dish name and quantity(the amount will be calculated automatically). 10% discount will be given to regular customers automatically. Simultaneously, customer database will also be updated.
 2) Keep a record of the ingredients required for each dish on the menu and check if all the ingredients required for fulfilling a particular order are available in sufficient quantity at the time of taking order.
 
 The ER diagram, relational schema, functional dependancies and normalisation process for this project can be checked in the FDs and Normalisation pdf file.
