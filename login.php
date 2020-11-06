@@ -4,7 +4,12 @@ if(isset($_POST['log'])){
     $nam=$_POST["login-email"];
     $pass=$_POST["login-password"];
     $utype = '';
+    
+    // selecting email and password, user type in order to validate whether user is right or not
+    // and if user is valid to select the respective user interface to show
+    
     $sql="SELECT email,password,u_type from users where email='$nam' AND password='$pass'";
+    
     if($result = mysqli_query($link,$sql)){
         if(mysqli_num_rows($result) == 1){
           while($row = mysqli_fetch_array($result)){

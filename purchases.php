@@ -6,28 +6,75 @@ if(isset($_POST['add'])){
   $quantity=$_POST['quantity'];
   $amt=$_POST['amount'];
   $iquantity=$quantity;
-  $sql6="INSERT INTO ingredients VALUES ('$ingredientname','$iquantity')";
-  $result = mysqli_query($link,$sql6);
+  
+  // checking if the ingredient already exist in stock
+  
+  $sql9="SELECT * FROM ingredients WHERE i_name='$ingredientname'";
+  $res9 = mysqli_query($link,$sql9);
+  
+  
+  if(mysqli_num_rows($res9) == 1){
+    
+    // if exists update quantity 
+
+    $sql5="UPDATE ingredients SET i_quantity=i_quantity+$quantity WHERE i_name='$ingredientname'";
+    
+    $result6=mysqli_query($link,$sql5);
+  }
+  else{
+    
+    // else making new entry for ingredient
+
+    $sql6="INSERT INTO ingredients VALUES ('$ingredientname','$iquantity')";
+    
+    $result = mysqli_query($link,$sql6);
+  }
+  
+
+  
+  // inserting new supplier info into database
+  // and if it already existed then duplicate will not be accepted 
+  
   $sql7="INSERT INTO supplier_info (s_number) VALUES ('$supplierno')";
+  
   $result2 = mysqli_query($link,$sql7);
+  
+  // inserting new supplier and ingredient supplied by them even if it already exist then
+  // it will not be added as duplicate are not accepted
+
   $sql8="INSERT INTO ingredient_supplier VALUES ('$ingredientname','$supplierno')";
+  
   $result1 = mysqli_query($link,$sql8);
   $des=$ingredientname." quantity-".strval($quantity)." supplierno-".strval($supplierno)." amount-".strval($amt);
+  
+  // adding new transaction
+  
   $sql = "INSERT INTO transaction (t_type,t_description,t_amount) VALUES ('payment','$des','$amt')";
+  
   $result = mysqli_query($link,$sql);
+  
+  // getting tid for latest transaction
+  
   $sql1="SELECT MAX(t_id) as last FROM transaction";
+  
   $result2 = mysqli_query($link,$sql1);
   $row = mysqli_fetch_array($result2);
   $last = $row['last'];
+  
+  // getting timestamp of latest transaction
+  
   $sql2="SELECT t_id,t_timestamp FROM transaction WHERE t_id='$last'";
+  
   $result3=mysqli_query($link,$sql2);
   $row = mysqli_fetch_array($result3);
   $tid=$row['t_id'];
   $ctime=$row['t_timestamp'];
+  
+  // adding new purchase entry
+
   $sql4="INSERT INTO purchase (i_name,p_quantity,t_id,p_amount,p_timestamp,s_number) VALUES ('$ingredientname','$quantity','$tid','$amt','$ctime','$supplierno')";
+  
   $result4=mysqli_query($link,$sql4);
-  $sql5="UPDATE ingredients SET i_quantity=i_quantity+$quantity WHERE i_name='$ingredientname'";
-  $result6=mysqli_query($link,$sql5);
 }
 ?>
 
@@ -202,7 +249,11 @@ if(isset($_POST['add'])){
             <div class="container">
               <table style="width: 100%;" id="purchases" class="styled-table">
                 <?php
+                
+                // selecting purchases details
+                
                 $sql2 = "SELECT * FROM purchase";
+                
                 if($result = mysqli_query($link,$sql2)){
                     if(mysqli_num_rows($result) > 0){
                 ?>

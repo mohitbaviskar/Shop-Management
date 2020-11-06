@@ -1,4 +1,5 @@
 <?php
+// connecting to database
   $link = mysqli_connect("localhost", "root", "", "shop");
   // Check connection
   if($link === false){

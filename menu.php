@@ -2,18 +2,30 @@
 include_once ('root.php');
 if(isset($_POST['insert'])){
   $dname=$_POST['dishname'];
+  
+  // selecting the dish whose details are to be updated
+
   $sql1="SELECT d_name FROM MENU WHERE d_name='$dname'";
+  
   $result = mysqli_query($link,$sql1);
   if(mysqli_num_rows($result) == 1){
     $dprice=$_POST['price'];
+    
+    // updating details of selected dish
+    
     $sql2="UPDATE MENU SET d_price='$dprice' WHERE d_name='$dname'";
+    
     $result1 = mysqli_query($link,$sql2);
   }
   else{
     $dprice=$_POST['price'];
     $dtype=$_POST['type'];
     $ddesc=$_POST['description'];
+    
+    // adding new dish
+
     $sql3="INSERT INTO MENU VALUES ('$dname', '$ddesc', '$dtype', '$dprice')";
+    
     $result2 = mysqli_query($link,$sql3);
   }
 }
@@ -23,10 +35,18 @@ if(isset($_POST['insert'])){
 <?php
 if(isset($_POST['delete'])){
   $dname=$_POST['Name'];
+  
+  // selecting the dish to be deleted 
+
   $sql1="SELECT d_name FROM MENU WHERE d_name='$dname'";
+  
   $result = mysqli_query($link,$sql1);
   if(mysqli_num_rows($result) == 1){
+    
+    // deleting the selected dish 
+    
     $sql2="DELETE FROM MENU WHERE d_name='$dname'";
+    
     $result1 = mysqli_query($link,$sql2);
   }
 }
@@ -220,7 +240,11 @@ if(isset($_POST['delete'])){
         <div class="container">
           <table style="width: 100%;" id="menu" class="styled-table">
             <?php
+                
+                // selecting the details of dishes
+                
                 $sql2 = "SELECT * FROM menu";
+                
                 if($result = mysqli_query($link,$sql2)){
                     if(mysqli_num_rows($result) > 0){
             ?>

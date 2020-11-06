@@ -126,7 +126,11 @@ include_once ('root.php');
         <br />
         <table style="width: 100%" id="menu" class="styled-table">
             <?php
+            
+            // selecting dish requirements along with their quantities
+            
             $sql = "SELECT * from requirements";
+            
             if($result = mysqli_query($link,$sql)){
               if(mysqli_num_rows($result) > 0){
             ?>

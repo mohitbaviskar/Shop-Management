@@ -102,7 +102,11 @@ include_once ('root.php');
         </h1><br />
         <table style="width: 100%;" id="menu" class="styled-table">
             <?php
+                
+                // selecting details of dishes from  menu
+                
                 $sql = "SELECT * from menu";
+                
                 if($result = mysqli_query($link,$sql)){
                     if(mysqli_num_rows($result) > 0){
             ?>                

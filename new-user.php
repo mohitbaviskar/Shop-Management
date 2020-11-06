@@ -5,7 +5,11 @@ if(isset($_POST['newentry'])){
   $enumber=$_POST['mobile'];
   $position=$_POST['sort'];
   $pass=$_POST['password'];
+
+  // adding details of new user to system with login and password
+
   $sql1="INSERT INTO users VALUES ('$email','$pass','$position','$enumber')";
+  
   $result=mysqli_query($link,$sql1);
 }
 ?>

@@ -5,7 +5,13 @@ if(isset($_POST['order'])){
   $dish = $_POST['dishname'];
   $quantity = $_POST['quantity'];
   $cno = $_POST['customernumber'];
+
+  // finding the ingredients and their corresponding amounts required for ordered dish
+  // for confirming whether they are sufficient are not for current order
+  // otherwise printing that not sufficient ingredients
+
   $sql="SELECT ingredients.i_quantity,requirements.r_quantity FROM ingredients,requirements WHERE ingredients.i_name = requirements.i_name and requirements.i_name in (SELECT ingredients.i_name FROM requirements WHERE d_name='$dish')";
+  
   if($res = mysqli_query($link,$sql)){ 
     if(mysqli_num_rows($res) > 0){
       while($row = mysqli_fetch_array($res)){
@@ -24,38 +30,82 @@ if(isset($_POST['order'])){
     echo "<h4>Not sufficient ingredients</h4>";
   }
   else{
+
+    // after confirming that amount is sufficient again getting those amount of ingredients in order to 
+    // subtract them from original amount available
+
     $sql1="SELECT ingredients.i_quantity,requirements.r_quantity,ingredients.i_name FROM ingredients,requirements WHERE ingredients.i_name = requirements.i_name and requirements.i_name in (SELECT ingredients.i_name FROM requirements WHERE d_name='$dish')";
+    
     if($res1 = mysqli_query($link,$sql1)){ 
       if(mysqli_num_rows($res1) > 0){
         while($row = mysqli_fetch_array($res1)){
           $sub=$row['r_quantity']*$quantity;
           $iname = $row['i_name'];
+
+          // now updating the new values of quantity available for every ingredients
+
           $sql2="UPDATE ingredients SET i_quantity=i_quantity-$sub WHERE i_name='$iname'";
+
           $res2 = mysqli_query($link,$sql2);
         }
       }
     }
+
+// selecting the price of dish ordered
+
     $sql3 = "SELECT d_price FROM menu WHERE d_name='$dish'";
+    
     $res3 = mysqli_query($link,$sql3);
     $amt = 0;
     if($row = mysqli_fetch_array($res3)){
       $amt = $quantity * $row['d_price'];
     }
+    
+    // checking if the customer is regular one if the customer has frequency of more than 10
+    // then he/she will get 10 percent discount on their every next order 
+
+    $sql9="SELECT frequency From customers WHERE c_number='$cno'";
+    
+    $res9=mysqli_query($link,$sql9);
+    $row=mysqli_fetch_array($res9);
+    if($row['frequency'] > 10){
+      $amt = $amt * 0.9;
+    }
     $des=$dish." quantity-".strval($quantity)." customerno-".strval($cno)." amount-".strval($amt);
+    
+    // making order entry into transaction table
+
     $sql4 = "INSERT INTO transaction (t_type,t_description,t_amount) VALUES ('bill','$des','$amt')";
+    
     $result4 = mysqli_query($link,$sql4);
+    
+    // getting tid for making entry in order table 
+    
     $sql5="SELECT MAX(t_id) as last FROM transaction";
+    
     $result5 = mysqli_query($link,$sql5);
     $row = mysqli_fetch_array($result5);
     $last = $row['last'];
+    
+    // getting timestamp of latest order with help of tid for entry in order table
+
     $sql6="SELECT t_id,t_timestamp FROM transaction WHERE t_id='$last'";
+    
     $result6=mysqli_query($link,$sql6);
     $row = mysqli_fetch_array($result6);
     $tid=$row['t_id'];
     $ctime=$row['t_timestamp'];
+    
+    // making entry to order tables of current order
+
     $sql7="INSERT INTO orders (d_name,o_quantity,t_id,o_amount,o_timestamp,c_number) VALUES ('$dish','$quantity','$tid','$amt','$ctime','$cno')";
+    
     $result7=mysqli_query($link,$sql7);
+    
+    // incrementing the frequency of customer by one
+    
     $sql8 = "UPDATE customers SET frequency=frequency + 1 WHERE c_number='$cno'";
+    
     $res8= mysqli_query($link,$sql8);
   }
 }

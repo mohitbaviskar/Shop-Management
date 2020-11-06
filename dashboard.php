@@ -158,7 +158,11 @@ include_once ('root.php');
               <div class="p-prar">
                 <ul style="list-style: disc; color: #5c5c5c;">
                 <?php
+                  
+                  // selecting the ingredients which are about to run out of stock 
+
                   $sql="SELECT i_name,i_quantity FROM ingredients WHERE i_quantity < 10";
+                  
                   $result = mysqli_query($link,$sql);
                   while($row=mysqli_fetch_array($result)){
                     $etype=$row['i_name'];
@@ -186,7 +190,11 @@ include_once ('root.php');
               <div class="p-prar">
               <?php
                 $c = 0;
+                
+                // selecting total amount of payments received through orders 
+                
                 $sql = "SELECT sum(o_amount) AS value_sum FROM orders";
+                
                 $result=mysqli_query($link,$sql);
                 if($result = mysqli_query($link,$sql)){
                   if(mysqli_num_rows($result) > 0){
@@ -212,7 +220,11 @@ include_once ('root.php');
               <div class="p-prar">
               <?php
                 $c = 0;
+                
+                // selecting total amount of bills from purchases 
+
                 $sql = "SELECT sum(p_amount) AS value_sum FROM purchase";
+                
                 $result=mysqli_query($link,$sql);
                 if($result = mysqli_query($link,$sql)){
                   if(mysqli_num_rows($result) > 0){
@@ -241,7 +253,11 @@ include_once ('root.php');
                 <!-- <p>Sample text</p> -->
                 <?php
                 $c = 0;
+                
+                // finding total no. of transactions carried out in shop
+                
                 $sql = "SELECT * FROM transaction";
+                
                 $result=mysqli_query($link,$sql);
                 $c = mysqli_num_rows($result);
               ?>
@@ -268,6 +284,9 @@ include_once ('root.php');
                 </ul> -->
                 <ul>
                 <?php
+                  
+                  // selecting type of employees and their count
+
                   $sql="SELECT designation,count(designation) AS count_val FROM staff_details GROUP BY designation";
                   $result = mysqli_query($link,$sql);
                   while($row=mysqli_fetch_array($result)){

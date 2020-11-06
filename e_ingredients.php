@@ -106,7 +106,11 @@ include_once ('root.php');
                 <div class="col-md-6">
                     <table style="width: 100%;" id="ingredients" class="styled-table">
                         <?php
+                          
+                          // select the details of ingredients for a particular dish
+
                           $sql = "SELECT * from ingredients";
+                          
                           if($result = mysqli_query($link,$sql)){
                             if(mysqli_num_rows($result) > 0){
                         ?>

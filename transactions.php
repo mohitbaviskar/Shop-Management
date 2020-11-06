@@ -130,7 +130,11 @@ include_once ('root.php')
             <div class="container">
               <table style="width: 100%;" id="transactions" class="styled-table">
                 <?php
+                
+                // selecting details of all transactions
+                
                 $sql2 = "SELECT * FROM transaction";
+                
                 if($result = mysqli_query($link,$sql2)){
                     if(mysqli_num_rows($result) > 0){
                 ?>

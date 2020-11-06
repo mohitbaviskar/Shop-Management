@@ -5,11 +5,23 @@ if(isset($_POST['insert'])){
   $snumber=$_POST['suppliernumber'];
   $iname=$_POST['ingredientsupplied'];
   $iquantity=0;
+  
+  // making entry of new ingredient to ingredient table
+  
   $sql3="INSERT INTO ingredients VALUES ('$iname','$iquantity')";
+  
   $result = mysqli_query($link,$sql3);
+  
+  // making entry of new supplier into supplier info table 
+  
   $sql2="INSERT INTO supplier_info VALUES ('$sname','$snumber')";
+  
   $result2 = mysqli_query($link,$sql2);
+  
+  // making entry of supplier and corresponding ingredient bought from him
+  
   $sql1="INSERT INTO ingredient_supplier VALUES ('$iname','$snumber')";
+  
   $result1 = mysqli_query($link,$sql1);
 }
 ?>
@@ -174,7 +186,11 @@ if(isset($_POST['insert'])){
             <div class="container">
               <table style="width: 100%;" id="transactions" class="styled-table">
                 <?php
+                    
+                    // selecting details about suppliers
+                    
                     $sql2 = "SELECT * FROM supplier_info,ingredient_supplier where supplier_info.s_number=ingredient_supplier.s_number";
+                    
                     if($result = mysqli_query($link,$sql2)){
                         if(mysqli_num_rows($result) > 0){
                 ?>

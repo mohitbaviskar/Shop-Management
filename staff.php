@@ -3,18 +3,30 @@ include_once ('root.php');
 if(isset($_POST['insert'])){
   $ename=$_POST['employeename'];
   $enumber=$_POST['employeenumber'];
+  
+  // selecting the employee who detail is to be modified
+  
   $sql1="SELECT e_number,e_name FROM staff_details WHERE e_name='$ename' AND e_number='$enumber'";
+  
   $result = mysqli_query($link,$sql1);
   if(mysqli_num_rows($result) == 1){
     $esalary=$_POST['salary'];
     $edes=$_POST['designation'];
+    
+    // updating staff info like increase in salary or change in designation
+
     $sql2="UPDATE staff_details SET designation='$edes',salary='$esalary' WHERE e_name='$ename' AND e_number='$enumber'";
+    
     $result1 = mysqli_query($link,$sql2);
   }
   else{
     $esalary=$_POST['salary'];
     $edes=$_POST['designation'];
+    
+    // adding details of new employee into database
+    
     $sql3="INSERT INTO staff_details VALUES ('$enumber', '$edes', '$ename', '$esalary')";
+    
     $result2 = mysqli_query($link,$sql3);
   }
 }
@@ -25,12 +37,24 @@ if(isset($_POST['insert'])){
 if(isset($_POST['delete'])){
   $ename=$_POST['Name'];
   $enumber=$_POST['mobilenumber'];
+  
+  // selecting the details of the employee to be removed from system
+
   $sql1="SELECT e_number,e_name FROM staff_details WHERE e_name='$ename' AND e_number='$enumber'";
+  
   $result = mysqli_query($link,$sql1);
   if(mysqli_num_rows($result) == 1){
+    
+    // deleting employees personal details
+
     $sql2="DELETE FROM staff_details WHERE e_number='$enumber' AND e_name='$ename'";
+    
     $result1 = mysqli_query($link,$sql2);
+    
+    // deleting employee's user detais 
+
     $sql3="DELETE FROM users WHERE u_number='$enumber'";
+    
     $result2=mysqli_query($link,$sql3);
   }
 }
@@ -228,7 +252,11 @@ if(isset($_POST['delete'])){
         <div class="container">
           <table style="width: 100%;" id="employee" class="styled-table">
             <?php
+
+              // selecting details of staff
+                
                 $sql2 = "SELECT * FROM staff_details";
+            
                 if($result = mysqli_query($link,$sql2)){
                     if(mysqli_num_rows($result) > 0){
             ?>
