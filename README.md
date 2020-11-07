@@ -15,7 +15,9 @@ The traditional way of running a pizza place involves a lot of hassles like main
 Technology stack used:
 
 Frontend : HTML, CSS, Bootstrap
+
 Backend : PHP
+
 Database : MySQL
 
 
