@@ -2,9 +2,9 @@
 
 ### Project done by:
 
-Arya Gandhi (MIS - 111803151)
+Arya Gandhi
 
-Mohit Baviskar (MIS - 111803148)
+Mohit Baviskar
 
 
 ### Introduction:
